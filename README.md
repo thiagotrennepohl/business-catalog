@@ -116,3 +116,20 @@ Update companies look into mongoDB if a company exists, if exists the company wi
   `curl -X GET 'http://localhost:8080/v1/company?name=t&zip=78229'`
 
 
+
+## Lib for reading data
+---
+
+https://github.com/thiagotrennepohl/sdr
+
+
+## Todo
+----
+- [] Use Goroutines for parsing the csvfile
+- [] Use Goroutines for bulk insertion
+- [] Split the csv file into the number of workers(go routines) specified
+- [] Cover error returns
+- [] Mock mongodb so we don't need a real mongodb anymore
+- [] Improve documentation
+- [] Include Lint into the build (Gometalinter)
+- [] Include Pprof analisys into the build
