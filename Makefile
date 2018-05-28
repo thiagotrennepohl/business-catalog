@@ -21,7 +21,7 @@ goget: tools ## [tools] Download dependencies
 	go get ./...
 
 dep: goget
-	dep ensure
+	dep ensures
 env: ## Set up tests environment
 	docker-compose up -d
 

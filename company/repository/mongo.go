@@ -67,7 +67,7 @@ func (cr *companyRepository) Find(name string, zip int) ([]models.Company, error
 
 	conn := session.DB("").C(companyCollection)
 
-	err := conn.Find(bson.M{"name": bson.M{"$regex": ".*" + name + ".*"}, "addresszip": zip}).All(&companies)
+	err := conn.Find(bson.M{"name": bson.M{"$regex": "^.*" + name + ".*"}, "addresszip": zip}).All(&companies)
 	log.Println(err)
 	return companies, err
 }
