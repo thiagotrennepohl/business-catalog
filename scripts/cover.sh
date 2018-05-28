@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
 
-export MONGO_URL=$(docker inspect -f '{{.NetworkSettings.Networks.workshopgo_default.IPAddress}}' workshopgo_mongodb_1)
 echo "mode: set" > full_coverage.out
 for pkg in $(go list ./... | grep -v /vendor/); do
     go test -v -cpu 1 -coverprofile=coverage.out -covermode=set $pkg
