@@ -7,9 +7,9 @@ Simple api for sending data via csv file
 ----
 `make all`
 
-The databses test will run on localhost:27017 and for auditing porpuses it isn't removed after the tests.
+_The databses test will run on localhost:27017 and for auditing porpuses it isn't removed after the tests._
 
-You can check all data at mongodb://localhost:27017/yawoen
+_You can check all data at `mongodb://localhost:27017/yawoen`_
 
 <br>
 
