@@ -62,7 +62,7 @@ func (cr *companyRepository) updateRecord(errChan chan error, conn *mgo.Collecti
 func (cr *companyRepository) Find(name string, zip int) ([]models.Company, error) {
 	var companies []models.Company
 	session := cr.session.Copy()
-	// defer session.Close()
+	defer session.Close()
 
 	conn := session.DB("").C(companyCollection)
 
