@@ -134,3 +134,4 @@ https://github.com/thiagotrennepohl/sdr
 - [] Include Lint into the build (Gometalinter)
 - [] Include Pprof analisys into the build
 - [] Improve application design
+- [] Create Tests for SDR
