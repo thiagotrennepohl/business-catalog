@@ -33,7 +33,7 @@ func (cr *companyRepository) Bulk(documents []models.Company) error {
 	defer session.Close()
 	for _, document := range documents {
 		wg.Add(1)
-		go cr.updateRecord(errChan, conn, &document, &wg)
+		go cr.updateRecord(errChan, conn, document, &wg)
 	}
 
 	go func(errChan chan error, wg *sync.WaitGroup) {
@@ -49,7 +49,7 @@ func (cr *companyRepository) Bulk(documents []models.Company) error {
 	return nil
 }
 
-func (cr *companyRepository) updateRecord(errChan chan error, conn *mgo.Collection, document *models.Company, wg *sync.WaitGroup) {
+func (cr *companyRepository) updateRecord(errChan chan error, conn *mgo.Collection, document models.Company, wg *sync.WaitGroup) {
 	err := conn.Update(bson.M{"name": strings.ToLower(document.Name)}, document)
 	if err == mgo.ErrNotFound {
 		//do nothing

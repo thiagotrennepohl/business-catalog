@@ -20,15 +20,17 @@ import (
 	mgo "gopkg.in/mgo.v2"
 )
 
+const CSVDelimiter = ";"
+
 func TestSucessFindCompany(t *testing.T) {
-	mongoSession, err := mgo.Dial("mongodb://localhost:27017/testbulk")
+	mongoSession, err := mgo.Dial("mongodb://localhost:27017/yawoen")
 	if err != nil {
 		panic(err)
 	}
 
 	ginEngine := gin.Default()
 	companyRepo := companyRepository.NewCompanyRepository(mongoSession)
-	sdr := sdr.NewSdr(sdr.SdrConfig{CommaDelimiter: ';'})
+	sdr := sdr.NewSdr(sdr.SdrConfig{CommaDelimiter: CSVDelimiter})
 	companyUcase := companyUseCase.NewCompanyUseCase(companyRepo, sdr)
 	companyHandler.NewHttpHandler(ginEngine, companyUcase)
 
@@ -47,14 +49,14 @@ func TestSucessFindCompany(t *testing.T) {
 }
 
 func TestFindCompanyWithoutZipParam(t *testing.T) {
-	mongoSession, err := mgo.Dial("mongodb://localhost:27017/testbulk")
+	mongoSession, err := mgo.Dial("mongodb://localhost:27017/yawoen")
 	if err != nil {
 		panic(err)
 	}
 
 	ginEngine := gin.Default()
 	companyRepo := companyRepository.NewCompanyRepository(mongoSession)
-	sdr := sdr.NewSdr(sdr.SdrConfig{CommaDelimiter: ';'})
+	sdr := sdr.NewSdr(sdr.SdrConfig{CommaDelimiter: CSVDelimiter})
 	companyUcase := companyUseCase.NewCompanyUseCase(companyRepo, sdr)
 	companyHandler.NewHttpHandler(ginEngine, companyUcase)
 
@@ -72,14 +74,14 @@ func TestFindCompanyWithoutZipParam(t *testing.T) {
 }
 
 func TestFindCompanyWithoutNameParam(t *testing.T) {
-	mongoSession, err := mgo.Dial("mongodb://localhost:27017/testbulk")
+	mongoSession, err := mgo.Dial("mongodb://localhost:27017/yawoen")
 	if err != nil {
 		panic(err)
 	}
 
 	ginEngine := gin.Default()
 	companyRepo := companyRepository.NewCompanyRepository(mongoSession)
-	sdr := sdr.NewSdr(sdr.SdrConfig{CommaDelimiter: ';'})
+	sdr := sdr.NewSdr(sdr.SdrConfig{CommaDelimiter: CSVDelimiter})
 	companyUcase := companyUseCase.NewCompanyUseCase(companyRepo, sdr)
 	companyHandler.NewHttpHandler(ginEngine, companyUcase)
 
@@ -97,14 +99,14 @@ func TestFindCompanyWithoutNameParam(t *testing.T) {
 
 func TestUpdateCompanies(t *testing.T) {
 
-	mongoSession, err := mgo.Dial("mongodb://localhost:27017/testbulk")
+	mongoSession, err := mgo.Dial("mongodb://localhost:27017/yawoen")
 	if err != nil {
 		panic(err)
 	}
 
 	ginEngine := gin.Default()
 	companyRepo := companyRepository.NewCompanyRepository(mongoSession)
-	sdr := sdr.NewSdr(sdr.SdrConfig{CommaDelimiter: ';'})
+	sdr := sdr.NewSdr(sdr.SdrConfig{CommaDelimiter: CSVDelimiter})
 	companyUcase := companyUseCase.NewCompanyUseCase(companyRepo, sdr)
 	companyHandler.NewHttpHandler(ginEngine, companyUcase)
 
@@ -162,7 +164,7 @@ func TestUpdateCompaniesWithWorngFormData(t *testing.T) {
 
 	ginEngine := gin.Default()
 	companyRepo := companyRepository.NewCompanyRepository(mongoSession)
-	sdr := sdr.NewSdr(sdr.SdrConfig{CommaDelimiter: ';'})
+	sdr := sdr.NewSdr(sdr.SdrConfig{CommaDelimiter: CSVDelimiter})
 	companyUcase := companyUseCase.NewCompanyUseCase(companyRepo, sdr)
 	companyHandler.NewHttpHandler(ginEngine, companyUcase)
 
@@ -213,14 +215,14 @@ func TestUpdateCompaniesWithWorngFormData(t *testing.T) {
 
 func TestUpdateCompaniesWithoutAssetsFolder(t *testing.T) {
 
-	mongoSession, err := mgo.Dial("mongodb://localhost:27017/testbulk")
+	mongoSession, err := mgo.Dial("mongodb://localhost:27017/yawoen")
 	if err != nil {
 		panic(err)
 	}
 
 	ginEngine := gin.Default()
 	companyRepo := companyRepository.NewCompanyRepository(mongoSession)
-	sdr := sdr.NewSdr(sdr.SdrConfig{CommaDelimiter: ';'})
+	sdr := sdr.NewSdr(sdr.SdrConfig{CommaDelimiter: CSVDelimiter})
 	companyUcase := companyUseCase.NewCompanyUseCase(companyRepo, sdr)
 	companyHandler.NewHttpHandler(ginEngine, companyUcase)
 
@@ -256,14 +258,14 @@ func TestUpdateCompaniesWithoutAssetsFolder(t *testing.T) {
 }
 
 func TestUpdateCompaniesWithWrongHeaders(t *testing.T) {
-	mongoSession, err := mgo.Dial("mongodb://localhost:27017/testbulk")
+	mongoSession, err := mgo.Dial("mongodb://localhost:27017/yawoen")
 	if err != nil {
 		panic(err)
 	}
 
 	ginEngine := gin.Default()
 	companyRepo := companyRepository.NewCompanyRepository(mongoSession)
-	sdr := sdr.NewSdr(sdr.SdrConfig{CommaDelimiter: ';'})
+	sdr := sdr.NewSdr(sdr.SdrConfig{CommaDelimiter: CSVDelimiter})
 	companyUcase := companyUseCase.NewCompanyUseCase(companyRepo, sdr)
 	companyHandler.NewHttpHandler(ginEngine, companyUcase)
 

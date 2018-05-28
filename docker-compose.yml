@@ -1,0 +1,4 @@
+mongo:
+  image: mongo
+  net: host
+  container_name: business-catalog-mongodb

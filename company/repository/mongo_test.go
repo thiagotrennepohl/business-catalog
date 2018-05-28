@@ -10,7 +10,7 @@ import (
 )
 
 func TestUpdateMany(t *testing.T) {
-	mongosession, err := mgo.Dial("mongodb://localhost:27017/testbulk")
+	mongosession, err := mgo.Dial("mongodb://localhost:27017/yawoen")
 	if err != nil {
 		t.Error(err)
 	}
@@ -36,7 +36,7 @@ func TestFindCompany(t *testing.T) {
 		Website:    "test.com",
 	}
 
-	mongosession, err := mgo.Dial("mongodb://localhost:27017/testbulk")
+	mongosession, err := mgo.Dial("mongodb://localhost:27017/yawoen")
 	if err != nil {
 		t.Error(err)
 	}
