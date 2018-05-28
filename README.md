@@ -1,4 +1,4 @@
-# Business-Catalog [![Build Status](https://travis-ci.org/thiagotrennepohl/business-catalog.svg?branch=master)](https://travis-ci.org/thiagotrennepohl/business-catalog)
+# Business-Catalog [![Build Status](https://travis-ci.org/thiagotrennepohl/business-catalog.svg?branch=feature-company-catalog)](https://travis-ci.org/thiagotrennepohl/business-catalog)
 
 Simple api for sending data via csv file
 
