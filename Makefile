@@ -1,6 +1,6 @@
 .DEFAULT_GOAL := help
 
-.PHONY: all tools clean goget env env-ip test do-test env-stop test do-cover cover build image help
+.PHONY: all tools clean dep env env-ip test do-test env-stop test do-cover cover build image help
 
 NAME    = business-catalog
 VERSION = 1.0.0
@@ -18,8 +18,10 @@ clean: ## Remove old binary
 	find vendor/* -maxdepth 0 -type d -exec rm -rf '{}' \;
 
 goget: tools ## [tools] Download dependencies
-	dep ensure -v
+	go get ./...
 
+dep: goget
+	dep ensure
 env: ## Set up tests environment
 	docker-compose up -d
 
