@@ -79,7 +79,7 @@
   branch = "master"
   name = "github.com/thiagotrennepohl/sdr"
   packages = ["sdr"]
-  revision = "7a97a6be101631afa70f84770490827999b840c0"
+  revision = "bc32da76ed57994bb1f4bcac7e04e8640cf19f8b"
 
 [[projects]]
   name = "github.com/ugorji/go"
