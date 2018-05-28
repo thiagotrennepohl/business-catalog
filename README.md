@@ -72,7 +72,7 @@ Update companies look into mongoDB if a company exists, if exists the company wi
 ----
 
 **Find Company**  - GET /v1/company?name=&zip=<br><br>
-Update companies look into mongoDB if a company exists, if exists the company will be updated
+Find Company will look for a matching company by given a name and zip.
 ----
 
 * **URL**
