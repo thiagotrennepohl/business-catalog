@@ -18,7 +18,7 @@ clean: ## Remove old binary
 	find vendor/* -maxdepth 0 -type d -exec rm -rf '{}' \;
 
 goget: tools ## [tools] Download dependencies
-	dep ensure
+	dep ensure -v
 
 env: ## Set up tests environment
 	docker-compose up -d
