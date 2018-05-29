@@ -7,9 +7,26 @@ Simple api for sending data via csv file
 ----
 `make all`
 
+## First step - Populate database
+
 _The databses test will run on localhost:27017 and for auditing porpuses it isn't removed after the tests._
 
 _You can check all data at `mongodb://localhost:27017/yawoen`_
+
+_If you run the command `make all` the following steps will be executed_ :<br>
+1 - Create a mongodb
+2 - Populate it using a csvfile at `assets/q1_catalog.csv`
+3 - Run tests
+4 - Build
+5 - Docker build
+
+If you want to run only the step 1 and 2 <br>
+`make populate-db`
+
+And a populated mongodb will be avaliable at localhost:27017
+
+----
+If you want to check all options you can just run `make` and a help will be shown on the console.
 
 <br>
 
