@@ -80,11 +80,54 @@ func TestZipCodeParsing(t *testing.T) {
 	assert.Equal(t, 12345, valid)
 }
 
+func TestValidHeader(t *testing.T) {
+	headers := []string{"name", "addresszip", "website"}
+	companySdrMock := new(mocks.Sdr)
+	companyRepositoryMock := new(mocks.CompanyRepository)
+
+	companyUseCase := &companyUseCase{
+		companyRepository: companyRepositoryMock,
+		sdr:               companySdrMock,
+	}
+
+	err := companyUseCase.validadeHeaders(headers)
+	assert.NoError(t, err)
+}
+
+func TestInvalidHeader(t *testing.T) {
+	headers := []string{"NAME", "addresszip", "website"}
+	companySdrMock := new(mocks.Sdr)
+	companyRepositoryMock := new(mocks.CompanyRepository)
+
+	companyUseCase := &companyUseCase{
+		companyRepository: companyRepositoryMock,
+		sdr:               companySdrMock,
+	}
+
+	err := companyUseCase.validadeHeaders(headers)
+
+	assert.Error(t, err)
+}
+
+func TestTooManyHeaders(t *testing.T) {
+	headers := []string{"NAME", "addresszip", "website", "Bla"}
+	companySdrMock := new(mocks.Sdr)
+	companyRepositoryMock := new(mocks.CompanyRepository)
+
+	companyUseCase := &companyUseCase{
+		companyRepository: companyRepositoryMock,
+		sdr:               companySdrMock,
+	}
+
+	err := companyUseCase.validadeHeaders(headers)
+
+	assert.Error(t, err)
+}
 func TestDataCleaning(t *testing.T) {
 	dataParam := map[string]interface{}{
-		"NAME":       "Some company",
-		"WEBSITE":    "HTTP://SOMEWEBSITE",
-		"ADDRESSZIP": "12345",
+		"name":       "Some company",
+		"website":    "HTTP://SOMEWEBSITE",
+		"addresszip": "12345",
 	}
 
 	companySdrMock := new(mocks.Sdr)
@@ -105,9 +148,9 @@ func TestDataCleaning(t *testing.T) {
 
 func TestInvalidZipOnClean(t *testing.T) {
 	dataParam := map[string]interface{}{
-		"NAME":       "Some company",
-		"WEBSITE":    "HTTP://SOMEWEBSITE",
-		"ADDRESSZIP": "1234",
+		"name":       "Some company",
+		"website":    "HTTP://SOMEWEBSITE",
+		"addresszip": "1234",
 	}
 
 	companySdrMock := new(mocks.Sdr)
@@ -126,9 +169,9 @@ func TestInvalidZipOnClean(t *testing.T) {
 // Is working as expected but I feel it this isn't a useful test
 func TestZipParsingError(t *testing.T) {
 	dataParam := map[string]interface{}{
-		"NAME":       "Some company",
-		"WEBSITE":    "HTTP://SOMEWEBSITE",
-		"ADDRESSZIP": "somenumber",
+		"name":       "Some company",
+		"website":    "HTTP://SOMEWEBSITE",
+		"addresszip": "somenumber",
 	}
 
 	companySdrMock := new(mocks.Sdr)
@@ -162,6 +205,7 @@ func TestTransform(t *testing.T) {
 	assert.Equal(t, companies, result)
 	assert.Len(t, companies, 0)
 }
+
 func TestUpdateManyCompanies(t *testing.T) {
 	companyMockRepo := new(mocks.CompanyRepository)
 	companySdrMock := new(mocks.Sdr)
