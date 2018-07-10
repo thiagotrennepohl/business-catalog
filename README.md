@@ -149,6 +149,6 @@ https://github.com/thiagotrennepohl/sdr
 - [] Mock mongodb so we don't need a real mongodb anymore
 - [] Improve documentation
 - [] Include Lint into the build (Gometalinter)
-- [] Include Pprof analisys into the build
+- [] Include Proof analysis into the build
 - [] Improve application design
 - [] Create Tests for SDR
